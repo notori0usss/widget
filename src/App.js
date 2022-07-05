@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Dropdown from "./Components/Dropdown"
 // import Accordion from "./Components/Accordion"
 // import Search from "./Components/Search"
@@ -17,7 +17,7 @@ import Dropdown from "./Components/Dropdown"
 //     content: "Installing node and npm install react",
 //   },
 // ]
-const colors = [
+const options = [
   {
     label: "The color Red",
     value: "red",
@@ -32,12 +32,17 @@ const colors = [
   },
 ]
 const App = () => {
+  const [selected, setSelected] = useState(options[0])
   return (
     <div>
       <h1>Widget App</h1>
       {/* <Accordion items={items} /> */}
       {/* <Search /> */}
-      <Dropdown colors={colors}></Dropdown>
+      <Dropdown
+        options={options}
+        selected={selected}
+        onSelectedChange={setSelected}
+      ></Dropdown>
     </div>
   )
 }
