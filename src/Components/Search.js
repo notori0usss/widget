@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 const Search = () => {
-  const [term, setTerm] = useState("Swaroop Dhungana")
+  const [term, setTerm] = useState("Cock")
   const [results, setResults] = useState([])
   useEffect(() => {
     const fetchData = async () => {
@@ -16,10 +16,24 @@ const Search = () => {
       })
       setResults(data.query.search)
     }
-    //check if term is null or empty string
-
-    fetchData()
+    //condition for intial search
+    if (term && !results.length) {
+      fetchData()
+    }
+    //when we set timeout we get an id
+    else {
+      const timeoutId = setTimeout(() => {
+        //check if term is null or empty string
+        if (term) {
+          fetchData()
+        }
+      }, 1000)
+      return () => {
+        clearTimeout(timeoutId)
+      }
+    }
   }, [term])
+
   const onInputChange = (e) => {
     setTerm(e.target.value)
   }

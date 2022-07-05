@@ -1,6 +1,7 @@
 import React from "react"
+import Dropdown from "./Components/Dropdown"
 // import Accordion from "./Components/Accordion"
-import Search from "./Components/Search"
+// import Search from "./Components/Search"
 
 // const items = [
 //   {
@@ -16,12 +17,27 @@ import Search from "./Components/Search"
 //     content: "Installing node and npm install react",
 //   },
 // ]
+const colors = [
+  {
+    label: "The color Red",
+    value: "red",
+  },
+  {
+    label: "The color Green",
+    value: "green",
+  },
+  {
+    label: "The color Blue",
+    value: "blue",
+  },
+]
 const App = () => {
   return (
     <div>
       <h1>Widget App</h1>
       {/* <Accordion items={items} /> */}
-      <Search />
+      {/* <Search /> */}
+      <Dropdown colors={colors}></Dropdown>
     </div>
   )
 }
